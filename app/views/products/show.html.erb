@@ -2,3 +2,18 @@
 <h3>£<%= @product.price %></h3>
 <p><%= @product.description %></p>
 <p><%= link_to "Edit", edit_product_path(@product) %>
+<p><%= link_to "Leave comment", new_product_comment_path(@product)%>
+
+<h3>Comments for <%= @product.name %></h3>
+
+<% if @product.comments.any? %>
+  <ul>
+    <% @product.comments.each do |comment| %>
+      <li>
+        <%= comment.thoughts %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No comments.</p>
+<% end %>
