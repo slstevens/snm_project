@@ -1,10 +1,10 @@
 <% if @products.any? %>
-	<% @products.each do %>
-	<h2><%= product.name %></h2>
-	<h3><%= product.price %></h3>
+	<% @products.each do |product| %>
+	<h2><%= link_to "#{product.name}", product_path(product) %></h2>
+	<h3>£<%= product.price %></h3>
 	<p><%= product.description %></p>
 	<% end %>
 	<% else %>
 		<p>No products yet!</p>
 <% end %>	
-<a href="#">Add a product</a>
+<%= link_to "Add a new product", new_product_path %>
